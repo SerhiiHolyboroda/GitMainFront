@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Product } from './models/product';
 import { Pagination } from './models/pagination';
+import { BasketService } from './basket/basket.service';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +15,7 @@ export class AppComponent implements OnInit{
 
 
   constructor(
-  // private http: HttpClient
+  private basketService: BasketService
     ) {}
 
   ngOnInit(): void {
@@ -26,5 +27,7 @@ export class AppComponent implements OnInit{
   //       console.log("Request completed");
   //     }
   //   });
+  const basketId = localStorage.getItem('basket_id');
+  if (basketId) this.basketService.getBasket(basketId);
    }
 }

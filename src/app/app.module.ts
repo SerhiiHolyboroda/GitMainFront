@@ -9,6 +9,7 @@ import { NavBarComponent } from './Components/nav-bar/nav-bar.component';
 import { HomeModule } from './home/home.module';
 import { ErrorInterceptor } from './Components/interceptors/error.interceptor';
 import { CoreModule } from './Components/core.module';
+import { LoadingInterceptor } from './Components/interceptors/loading.interceptor';
 
 @NgModule({
   declarations: [
@@ -25,10 +26,9 @@ import { CoreModule } from './Components/core.module';
     CoreModule
   ],
   providers: [
-{
-  provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true
-}
 
+  {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
+  {provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true}
 
   ],
   bootstrap: [AppComponent]

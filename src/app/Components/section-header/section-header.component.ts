@@ -1,3 +1,4 @@
+import { BreadcrumbService } from 'xng-breadcrumb';
 import { Component } from '@angular/core';
 
 @Component({
@@ -7,4 +8,7 @@ import { Component } from '@angular/core';
 })
 export class SectionHeaderComponent {
 
+  constructor(public bcService: BreadcrumbService) {
+
+  }
 }
